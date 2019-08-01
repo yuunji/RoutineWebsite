@@ -1,12 +1,12 @@
 import React from 'react';
 import Tweet from './tweet';
-
+import Name from './Name';
 
 function App(){
   return(
     <div className = "app">
-  <h1>Random Message</h1>
-  <Tweet name="Yunji" message="123TestMessage456"/>
+      <Name />
+      <Tweet message="123TestMessage456"/>
     </div>
   );
 
