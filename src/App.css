@@ -1,0 +1,18 @@
+.app{
+  height: 100vh;
+  background: lavender;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.WeightInput{
+  height: 250px;
+  width: 250px;
+  background: white;
+  border: 2px solid navy;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
