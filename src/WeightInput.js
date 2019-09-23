@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {updateNameAction, updateBenchAction, updateDeadAction, updateOHPAction} from './redux-actions';
 import './App.css';
 
+
 class WeightInput extends React.Component {
 
   _onSquat = (e) => {
@@ -30,17 +31,19 @@ class WeightInput extends React.Component {
   };
 
   render() {
-    const {SquatWeight, BenchWeight, DeadWeight, OHPWeight} = this.props;
+
     return (
       <div className="WeightInput">
+
         {/*
         <h3>{SquatWeight}</h3>
         <h3>{BenchWeight}</h3>
         <h3>{DeadWeight}</h3>
         <h3>{OHPWeight}</h3>
             */}
-        <h3>Please enter your PB</h3>
-        <h3>on each lift</h3>
+
+
+        <h3 className="Message">Please enter your max on each lift</h3>
         <input type="integer" placeholder={"Squat Max"} onChange={this._onSquat}/>
         <input type="integer" placeholder={"Bench Press Max"} onChange={this._onBench}/>
         <input type="integer" placeholder={"Deadlift Max"} onChange={this._onDead}/>

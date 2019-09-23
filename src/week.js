@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Alert from 'react-bootstrap/Alert';
 import {updateWeekAction} from './redux-actions';
 
 
@@ -19,10 +20,7 @@ const workoutConstants = [
 ]
 
 
-
 class WorkoutWeek extends React.Component{
-
-//onClick = {this.props.onUpdateWeek0(setWeek)}
 
 
 _onClick = (weekindex, event) => {
@@ -30,148 +28,86 @@ _onClick = (weekindex, event) => {
   this.props.onUpdateWeek(weekindex)
 }
 
-  render(){
-    const {SquatWeight, BenchWeight, DeadWeight, OHPWeight, setWeek} = this.props
+render(){
 
-
-
-
-
+  const {SquatWeight, BenchWeight, DeadWeight, OHPWeight, setWeek} = this.props
 
   return(
+
+
+    <Alert variant= "primary">
+    <Alert.Heading> 6 DAY PUSH PULL LEGS - FULL BODY SPLIT </Alert.Heading>
+    <p>
     <Accordion>
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="0" onClick = {this._onClick.bind(this, 0)}> WEEK 1 </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0" >
-               <Card.Body>
-               <div>
+        <Card.Title>
 
-               <h1>Legs #1</h1>
-               <h1>Squat     5 Rep Max:{SquatWeight * workoutConstants[setWeek][0][0]}</h1>
-               <h1>Squat     4x12:{SquatWeight * workoutConstants[setWeek][0][1]}</h1>
+        </Card.Title>
+        {workoutConstants.map((constants, index) => (
+        <Card border = "primary"  style={ {width: '50rem' }   }>
 
-               <h1>Push #1</h1>
-               <h1>Bench     1 Rep Max:{BenchWeight * workoutConstants[setWeek][1][0]}</h1>
-               <h1>Bench     4x4:{BenchWeight * workoutConstants[setWeek][1][1]}</h1>
-
-               <h1>Pull #1</h1>
-               <h1>Deadlift     3 Rep Max:{DeadWeight * workoutConstants[setWeek][2][0]}</h1>
-               <h1>Deadlift     4x6:{DeadWeight * workoutConstants[setWeek][2][1]}</h1>
-
-
-               <h1>Legs #2</h1>
-               <h1>Squat     3 Rep Max:{SquatWeight * workoutConstants[setWeek][3][0]}</h1>
-               <h1>Squat     4x8:{SquatWeight * workoutConstants[setWeek][3][1]}</h1>
-
-
-               <h1> Push #2</h1>
-               <h1>OHP     5 Rep Max:{OHPWeight * workoutConstants[setWeek][4][0]}</h1>
-               <h1>OHP     4x12:{OHPWeight * workoutConstants[setWeek][4][1]}</h1>
-
-
-               <h1> Pull #2 </h1>
-               <h1>Deadlift     1 Rep Max:{DeadWeight * workoutConstants[setWeek][5][0]}</h1>
-               <h1>Deadlift     4x2:{DeadWeight * workoutConstants[setWeek][5][1]}</h1>
-
-               </div>
-
-               </Card.Body>
-            </Accordion.Collapse>
-      </Card>
-
-
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="2" onClick = {this._onClick.bind(this, 1)} >
-          WEEK 2
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="2">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
-
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="3" >
-          WEEK 3
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="3">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
-
-
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="4" >
-          WEEK 4
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="4">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
+          <Accordion.Toggle as={Card.Header} eventKey={index} onClick = {this._onClick.bind(this, index)}>{`WEEK ${index + 1}`} </Accordion.Toggle>
+              <Accordion.Collapse eventKey={index}>
+                 <Card.Body>
 
 
 
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="5" >
-          WEEK 5
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="5">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
+                 <Card.Header>LEGS #1
+                 </Card.Header>
+                 <ListGroup className = "days">
+                 <ListGroup.Item className="Exercises">Barbell Squat     5 Rep Max: {SquatWeight * constants[0][0]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Barbell Squat     4x12: {SquatWeight * constants[0][1]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Acessories: Quads, Hamstrings, Calves</ListGroup.Item>
+                 </ListGroup>
+
+                 <Card.Header>PUSH #1</Card.Header>
+                 <ListGroup className = "days">
+                 <ListGroup.Item className="Exercises">Barbell Bench Press    1 Rep Max: {BenchWeight * constants[1][0]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Barbell Bench Press    4x4: {BenchWeight * constants[1][1]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Acessories: Chest, Shoulders, Triceps </ListGroup.Item>
+                 </ListGroup>
+
+                 <Card.Header>PULL #1</Card.Header>
+                 <ListGroup className = "days">
+                 <ListGroup.Item className="Exercises">Barbell Deadlift     3 Rep Max: {DeadWeight * constants[2][0]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Barbell Deadlift     4x6: {DeadWeight * constants[2][1]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Acessories: Back, Biceps </ListGroup.Item>
+                 </ListGroup>
+
+                 <Card.Header>LEGS #2</Card.Header>
+                 <ListGroup active className = "days">
+                 <ListGroup.Item className="Exercises">Barbell Squat     3 Rep Max: {SquatWeight * constants[3][0]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Barbell Squat     4x8: {SquatWeight * constants[3][1]}</ListGroup.Item>
+                 <ListGroup.Item className="Exercises">Acessories: Quads, Hamstrings, Calves</ListGroup.Item>
+                 </ListGroup>
 
 
 
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="6" >
-          WEEK 6
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="6">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
+                 <Card.Header>PUSH #2</Card.Header>
+                 <ListGroup  className = "days">
+                 <ListGroup.Item>Barbell Overhead Press     5 Rep Max: {OHPWeight * constants[4][0]}</ListGroup.Item>
+                 <ListGroup.Item>Barbell Overhead Press     4x12: {OHPWeight * constants[4][1]}</ListGroup.Item>
+                 <ListGroup.Item>Acessories: Chest, Shoulders, Triceps </ListGroup.Item>
+                 </ListGroup>
 
 
-
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="7" >
-          WEEK 7
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="7">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
+                 <Card.Header>PULL #2 </Card.Header>
+                 <ListGroup className = "days">
+                 <ListGroup.Item>Barbell Deadlift     1 Rep Max: {DeadWeight * constants[5][0]}</ListGroup.Item>
+                 <ListGroup.Item>Barbell Deadlift     4x2: {DeadWeight * constants[5][1]}</ListGroup.Item>
+                 <ListGroup.Item>Acessories: Back, Biceps </ListGroup.Item>
+                 </ListGroup>
 
 
-
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="8" >
-          WEEK 8
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="8">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
-
-
-
-      <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="9" >
-          WEEK 9
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="9">
-          <Card.Body>Hello! I'm another body</Card.Body>
-        </Accordion.Collapse>
-      </Card>
-
-
-
+                 </Card.Body>
+              </Accordion.Collapse>
+          </Card>
+        ))}
     </Accordion>
+    </p>
 
-    //LegsNumOne(SquatWeight)
-    //PushNumOne(BenchWeight),
-    //PullNumOne(DeadWeight)
-    //LegsNumTwo(SquatWeight),
-    //PushNumTwo(OHPWeight)
+    </Alert>
+
+
   );
 }
 };

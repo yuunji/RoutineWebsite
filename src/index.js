@@ -7,12 +7,13 @@ import App from './App';
 import { combineReducers } from 'redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 const defaultUserState = {
   SquatWeight: 0,
   BenchWeight: 0,
   DeadWeight: 0,
   OHPWeight: 0,
-  setWeek: 5
+  setWeek: 0
 };
 
 const userReducer = (state = defaultUserState, action) => {
@@ -44,7 +45,6 @@ const userReducer = (state = defaultUserState, action) => {
       ...state,
       setWeek: action.payload
     }
-
 
     default:
       return state

@@ -1,18 +1,22 @@
+
 .app{
-  height: 100vh;
-  background: lavender;
+  height: 110rem;
+  background: #FCECD3;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items:  flex-start;
 }
 
 .WeightInput{
-  height: 250px;
+  height: 300px;
   width: 250px;
   background: white;
-  border: 2px solid navy;
+  padding: 15px;
+  border: 2px solid #4475AF;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  position: relative;
 }
