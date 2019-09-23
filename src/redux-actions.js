@@ -1,4 +1,4 @@
-export const updateNameAction = name => ({
+export const updateSquatAction = name => ({
   type: 'UPDATE_SQUAT',
   payload: name,
 });

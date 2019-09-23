@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
-import {updateNameAction, updateBenchAction, updateDeadAction, updateOHPAction} from './redux-actions';
+import {updateSquatAction, updateBenchAction, updateDeadAction, updateOHPAction} from './redux-actions';
 import './App.css';
 
 
 class WeightInput extends React.Component {
+
+
 
   _onSquat = (e) => {
     this.setState({SquatWeight: e.target.value})
@@ -22,9 +24,15 @@ class WeightInput extends React.Component {
     this.setState({OHPWeight: e.target.value})
   };
 
+
   _updateWeight = () => {
     const {SquatWeight, BenchWeight, DeadWeight, OHPWeight} = this.state;
-    this.props.onUpdateName(SquatWeight);
+
+    if (SquatWeight === null && typeof SquatWeight === 'object'){
+      this.props.onUpdateSquat(0)
+    };
+
+    this.props.onUpdateSquat(SquatWeight);
     this.props.onUpdateBench(BenchWeight);
     this.props.onUpdateDead(DeadWeight);
     this.props.onUpdateOHP(OHPWeight);
@@ -65,7 +73,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  onUpdateName: updateNameAction,
+  onUpdateSquat: updateSquatAction,
   onUpdateBench: updateBenchAction,
   onUpdateDead: updateDeadAction,
   onUpdateOHP: updateOHPAction

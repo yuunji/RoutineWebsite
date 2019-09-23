@@ -16,24 +16,28 @@ const defaultUserState = {
   setWeek: 0
 };
 
-const userReducer = (state = defaultUserState, action) => {
+const weightReducer = (state = defaultUserState, action) => {
   console.log(action.type)
   switch (action.type) {
+
     case 'UPDATE_SQUAT':
       return {
         ...state,
         SquatWeight: action.payload
       };
+
     case 'UPDATE_BENCH':
     return {
       ...state,
       BenchWeight: action.payload
     }
+
     case 'UPDATE_DEAD':
     return {
       ...state,
       DeadWeight: action.payload
     }
+
     case 'UPDATE_OHP':
     return {
       ...state,
@@ -52,7 +56,7 @@ const userReducer = (state = defaultUserState, action) => {
 }
 
 const reducers = combineReducers({
-  user: userReducer
+  user: weightReducer
 })
 
 const store = createStore(

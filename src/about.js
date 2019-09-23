@@ -10,7 +10,7 @@ class About extends React.Component {
 
   return (
 
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className= "About">
       <Card.Img variant="top" src="./thumbsup.png" />
       <Card.Body>
       <Alert variant="primary">

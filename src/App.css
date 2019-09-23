@@ -1,13 +1,28 @@
 
 .app{
-  height: 110rem;
+  height: 150rem;
   background: #FCECD3;
   display: flex;
   justify-content: space-around;
   align-items:  flex-start;
+
 }
 
+.About{
+  left: 80px;
+  top: 40px;
+}
+
+
+.Accordion{
+  top: 450px;
+  right: 150px;
+}
+
+
 .WeightInput{
+  top: 40px;
+  left: 120px;
   height: 300px;
   width: 250px;
   background: white;
