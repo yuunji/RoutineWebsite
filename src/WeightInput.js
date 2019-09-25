@@ -8,6 +8,8 @@ class WeightInput extends React.Component {
 
 
 
+
+
   _onSquat = (e) => {
     this.setState({SquatWeight: e.target.value})
   };
@@ -27,11 +29,6 @@ class WeightInput extends React.Component {
 
   _updateWeight = () => {
     const {SquatWeight, BenchWeight, DeadWeight, OHPWeight} = this.state;
-
-    if (SquatWeight === null && typeof SquatWeight === 'object'){
-      this.props.onUpdateSquat(0)
-    };
-
     this.props.onUpdateSquat(SquatWeight);
     this.props.onUpdateBench(BenchWeight);
     this.props.onUpdateDead(DeadWeight);
@@ -39,7 +36,6 @@ class WeightInput extends React.Component {
   };
 
   render() {
-
     return (
       <div className="WeightInput">
 

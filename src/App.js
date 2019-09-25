@@ -7,9 +7,10 @@ function App(){
   return(
     <div className = "app">
 
-      <About/>
-      <WeightInput message="123TestMessage456"/>
+     <About/>
+      <WeightInput />
       <WorkoutWeek/>
+
 
     </div>
   );

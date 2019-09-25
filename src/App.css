@@ -8,6 +8,10 @@
 
 }
 
+.table{
+  top: 500px;
+}
+
 .About{
   left: 80px;
   top: 40px;
@@ -15,6 +19,7 @@
 
 
 .Accordion{
+  align-items: center;
   top: 450px;
   right: 150px;
 }

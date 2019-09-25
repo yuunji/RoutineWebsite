@@ -4,6 +4,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Alert from 'react-bootstrap/Alert';
+import Table from 'react-bootstrap/Table';
 import {updateWeekAction} from './redux-actions';
 
 
@@ -24,6 +25,8 @@ function round5(x)
     return (x % 5) >= 2.5 ? parseInt(x / 5) * 5 + 5 : parseInt(x / 5) * 5;
 }
 
+
+
 class WorkoutWeek extends React.Component{
 
 
@@ -31,6 +34,8 @@ _onClick = (weekindex, event) => {
 
   this.props.onUpdateWeek(weekindex)
 }
+
+
 
 render(){
 
@@ -43,79 +48,75 @@ render(){
     <Alert.Heading> 6 DAY PUSH PULL LEGS - FULL BODY SPLIT </Alert.Heading>
     <p>
     <Accordion>
-        <Card.Title>
 
-        </Card.Title>
-        {workoutConstants.map((constants, index) => (
-        <Card border = "primary"  style={ {width: '50rem' }   }>
+    {workoutConstants.map((constants, index) => (
+    <Card border = "primary"  style={ {width: '50rem' }   }>
 
-          <Accordion.Toggle as={Card.Header} eventKey={index} onClick = {this._onClick.bind(this, index)}>{`WEEK ${index + 1}`} </Accordion.Toggle>
-              <Accordion.Collapse eventKey={index}>
-                 <Card.Body>
+      <Accordion.Toggle as={Card.Header} eventKey={index} size ="sm" onClick = {this._onClick.bind(this, index)}>{`WEEK ${index + 1}`} </Accordion.Toggle>
+          <Accordion.Collapse eventKey={index}>
+             <Card.Body>
+             <Table striped bordered hover size="sm" >
+               <thead>
+                 <tr>
+
+                   <th>LEGS #1</th>
+                   <th>PUSH #1</th>
+                   <th>PULL #1</th>
+                   <th>LEGS #2</th>
+                   <th>PUSH #2</th>
+                   <th>PULL #2</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+
+                   <td>Squat 5RM: {round5(SquatWeight * constants[0][0])} </td>
+                   <td>Bench Press 1RM: {round5(BenchWeight * constants[1][0])}</td>
+                   <td>Deadlift 3RM: {round5(DeadWeight * constants[2][0])}</td>
+                   <td>Squat 3RM: {round5(SquatWeight * constants[3][0])}</td>
+                   <td>Overhead Press 5RM: {round5(OHPWeight * constants[4][0])}</td>
+                   <td>Deadlift 1RM: {round5(DeadWeight * constants[5][0])}</td>
+
+                 </tr>
+                 <tr>
+
+                   <td>Squat 4x12: {round5(SquatWeight * constants[0][1])}</td>
+                   <td>Bench Press 4x4: {round5(BenchWeight * constants[1][1])}</td>
+                   <td>Deadlift 4x6: {round5(DeadWeight * constants[2][1])}</td>
+                   <td>Squat 4x8: {round5(SquatWeight * constants[3][1])}</td>
+                   <td>Overhead Press 4x12: {round5(OHPWeight * constants[4][1])}</td>
+                   <td>Deadlift 4x2: {round5(DeadWeight * constants[5][1])}</td>
+                 </tr>
+                 <tr>
+
+                   <td>Accessories: Quads, Hamstrings, Calves</td>
+                   <td>Accessories: Chest, Shoulders, Triceps</td>
+                   <td>Accessories: Back, Biceps</td>
+                   <td>Accessories: Quads, Hamstrings, Calves</td>
+                   <td>Accessories: Chest, Shoulders, Triceps</td>
+                   <td>Accessories: Back, Biceps</td>
+                 </tr>
+               </tbody>
+
+             </Table>
+             </Card.Body>
+          </Accordion.Collapse>
+      </Card>
+    )
+  )
+}
+</Accordion>
+</p>
+
+</Alert>
 
 
 
-                 <Card.Header>LEGS #1
-                 </Card.Header>
-                 <ListGroup className = "days">
-                 <ListGroup.Item className="Exercises">Barbell Squat     5 Rep Max: {round5(SquatWeight * constants[0][0])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Barbell Squat     4x12: {round5(SquatWeight * constants[0][1])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Acessories: Quads, Hamstrings, Calves</ListGroup.Item>
-                 </ListGroup>
-
-                 <Card.Header>PUSH #1</Card.Header>
-                 <ListGroup className = "days">
-                 <ListGroup.Item className="Exercises">Barbell Bench Press    1 Rep Max: {round5(BenchWeight * constants[1][0])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Barbell Bench Press    4x4: {round5(BenchWeight * constants[1][1])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Acessories: Chest, Shoulders, Triceps </ListGroup.Item>
-                 </ListGroup>
-
-                 <Card.Header>PULL #1</Card.Header>
-                 <ListGroup className = "days">
-                 <ListGroup.Item className="Exercises">Barbell Deadlift     3 Rep Max: {round5(DeadWeight * constants[2][0])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Barbell Deadlift     4x6: {round5(DeadWeight * constants[2][1])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Acessories: Back, Biceps </ListGroup.Item>
-                 </ListGroup>
-
-                 <Card.Header>LEGS #2</Card.Header>
-                 <ListGroup active className = "days">
-                 <ListGroup.Item className="Exercises">Barbell Squat     3 Rep Max: {round5(SquatWeight * constants[3][0])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Barbell Squat     4x8: {round5(SquatWeight * constants[3][1])}</ListGroup.Item>
-                 <ListGroup.Item className="Exercises">Acessories: Quads, Hamstrings, Calves</ListGroup.Item>
-                 </ListGroup>
-
-
-
-                 <Card.Header>PUSH #2</Card.Header>
-                 <ListGroup  className = "days">
-                 <ListGroup.Item>Barbell Overhead Press     5 Rep Max: {round5(OHPWeight * constants[4][0])}</ListGroup.Item>
-                 <ListGroup.Item>Barbell Overhead Press     4x12: {round5(OHPWeight * constants[4][1])}</ListGroup.Item>
-                 <ListGroup.Item>Acessories: Chest, Shoulders, Triceps </ListGroup.Item>
-                 </ListGroup>
-
-
-                 <Card.Header>PULL #2 </Card.Header>
-                 <ListGroup className = "days">
-                 <ListGroup.Item>Barbell Deadlift     1 Rep Max: {round5(DeadWeight * constants[5][0])}</ListGroup.Item>
-                 <ListGroup.Item>Barbell Deadlift     4x2: {round5(DeadWeight * constants[5][1])}</ListGroup.Item>
-                 <ListGroup.Item>Acessories: Back, Biceps </ListGroup.Item>
-                 </ListGroup>
-
-
-                 </Card.Body>
-              </Accordion.Collapse>
-          </Card>
-        )
-      )
-    }
-    </Accordion>
-    </p>
-
-    </Alert>
 
 
   );
 }
+
 };
 
 
