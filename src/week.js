@@ -43,80 +43,71 @@ render(){
 
   return(
 
+    <div className="workout-details-container">
+      <Alert variant= "primary" className = "accordion" style={{marginBottom: 0}}>
+        <Alert.Heading> 6 DAY PUSH PULL LEGS - FULL BODY SPLIT </Alert.Heading>
+      </Alert>
+      
+      <Accordion>
+      {workoutConstants.map((constants, index) => (
+      <Card border = "primary" >
+        <Accordion.Toggle as={Card.Header} eventKey={index} size ="sm" onClick = {this._onClick.bind(this, index)}>{`WEEK ${index + 1}`} </Accordion.Toggle>
+            <Accordion.Collapse eventKey={index}>
+               <Card.Body>
+               <Table striped bordered hover size="sm" >
+                 <thead>
+                   <tr>
 
-    <Alert variant= "primary" className = "Accordion">
-    <Alert.Heading> 6 DAY PUSH PULL LEGS - FULL BODY SPLIT </Alert.Heading>
-    <p>
-    <Accordion>
+                     <th>LEGS #1</th>
+                     <th>PUSH #1</th>
+                     <th>PULL #1</th>
+                     <th>LEGS #2</th>
+                     <th>PUSH #2</th>
+                     <th>PULL #2</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
 
-    {workoutConstants.map((constants, index) => (
-    <Card border = "primary"  style={ {width: '50rem' }   }>
+                     <td>Squat 5RM: {round5(SquatWeight * constants[0][0])} </td>
+                     <td>Bench Press 1RM: {round5(BenchWeight * constants[1][0])}</td>
+                     <td>Deadlift 3RM: {round5(DeadWeight * constants[2][0])}</td>
+                     <td>Squat 3RM: {round5(SquatWeight * constants[3][0])}</td>
+                     <td>Overhead Press 5RM: {round5(OHPWeight * constants[4][0])}</td>
+                     <td>Deadlift 1RM: {round5(DeadWeight * constants[5][0])}</td>
 
-      <Accordion.Toggle as={Card.Header} eventKey={index} size ="sm" onClick = {this._onClick.bind(this, index)}>{`WEEK ${index + 1}`} </Accordion.Toggle>
-          <Accordion.Collapse eventKey={index}>
-             <Card.Body>
-             <Table striped bordered hover size="sm" >
-               <thead>
-                 <tr>
+                   </tr>
+                   <tr>
 
-                   <th>LEGS #1</th>
-                   <th>PUSH #1</th>
-                   <th>PULL #1</th>
-                   <th>LEGS #2</th>
-                   <th>PUSH #2</th>
-                   <th>PULL #2</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
+                     <td>Squat 4x12: {round5(SquatWeight * constants[0][1])}</td>
+                     <td>Bench Press 4x4: {round5(BenchWeight * constants[1][1])}</td>
+                     <td>Deadlift 4x6: {round5(DeadWeight * constants[2][1])}</td>
+                     <td>Squat 4x8: {round5(SquatWeight * constants[3][1])}</td>
+                     <td>Overhead Press 4x12: {round5(OHPWeight * constants[4][1])}</td>
+                     <td>Deadlift 4x2: {round5(DeadWeight * constants[5][1])}</td>
+                   </tr>
+                   <tr>
 
-                   <td>Squat 5RM: {round5(SquatWeight * constants[0][0])} </td>
-                   <td>Bench Press 1RM: {round5(BenchWeight * constants[1][0])}</td>
-                   <td>Deadlift 3RM: {round5(DeadWeight * constants[2][0])}</td>
-                   <td>Squat 3RM: {round5(SquatWeight * constants[3][0])}</td>
-                   <td>Overhead Press 5RM: {round5(OHPWeight * constants[4][0])}</td>
-                   <td>Deadlift 1RM: {round5(DeadWeight * constants[5][0])}</td>
+                     <td>Accessories: Quads, Hamstrings, Calves</td>
+                     <td>Accessories: Chest, Shoulders, Triceps</td>
+                     <td>Accessories: Back, Biceps</td>
+                     <td>Accessories: Quads, Hamstrings, Calves</td>
+                     <td>Accessories: Chest, Shoulders, Triceps</td>
+                     <td>Accessories: Back, Biceps</td>
+                   </tr>
+                 </tbody>
 
-                 </tr>
-                 <tr>
-
-                   <td>Squat 4x12: {round5(SquatWeight * constants[0][1])}</td>
-                   <td>Bench Press 4x4: {round5(BenchWeight * constants[1][1])}</td>
-                   <td>Deadlift 4x6: {round5(DeadWeight * constants[2][1])}</td>
-                   <td>Squat 4x8: {round5(SquatWeight * constants[3][1])}</td>
-                   <td>Overhead Press 4x12: {round5(OHPWeight * constants[4][1])}</td>
-                   <td>Deadlift 4x2: {round5(DeadWeight * constants[5][1])}</td>
-                 </tr>
-                 <tr>
-
-                   <td>Accessories: Quads, Hamstrings, Calves</td>
-                   <td>Accessories: Chest, Shoulders, Triceps</td>
-                   <td>Accessories: Back, Biceps</td>
-                   <td>Accessories: Quads, Hamstrings, Calves</td>
-                   <td>Accessories: Chest, Shoulders, Triceps</td>
-                   <td>Accessories: Back, Biceps</td>
-                 </tr>
-               </tbody>
-
-             </Table>
-             </Card.Body>
-          </Accordion.Collapse>
-      </Card>
+               </Table>
+               </Card.Body>
+            </Accordion.Collapse>
+        </Card>
+      )
     )
-  )
-}
-</Accordion>
-</p>
-
-</Alert>
-
-
-
-
-
+  }
+  </Accordion>
+    </div>
   );
 }
-
 };
 
 

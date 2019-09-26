@@ -5,13 +5,16 @@ import WorkoutWeek from './week.js';
 
 function App(){
   return(
-    <div className = "app">
-
-     <About/>
-      <WeightInput />
-      <WorkoutWeek/>
-
-
+    <div className="app">
+      <div className="layout">
+        <div className="sidebar">
+          <About/>
+        </div>
+        <div className="content">
+          <WeightInput />
+          <WorkoutWeek/>
+        </div>
+      </div>
     </div>
   );
 

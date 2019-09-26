@@ -1,42 +1,76 @@
+html, body {
+  height:100%;
+  box-sizing: border-box;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
 
 .app{
-  height: 150rem;
+  height: 100%;
   background: #FCECD3;
-  display: flex;
-  justify-content: space-around;
-  align-items:  flex-start;
+  position: relative;
+  padding: 48px;
+}
 
+.layout {
+  display: flex;
+  flex-direction: row;
+}
+
+.workout-details-container {
+  width: 800px;
+}
+
+@media only screen and (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+  .workout-details-container {
+    width: 400px;
+  }
 }
 
 .table{
   top: 500px;
 }
 
-.About{
-  left: 80px;
-  top: 40px;
+.sidebar {
+  height: 100%;
+  width: 400px;
+  /*background-color: gray;*/
 }
 
+.content {
+  height: 100%;
+  /*background-color: white;*/
+  flex-grow: 1;
+  padding-left: 24px;
+  padding-right: 24px;
+}
 
 .Accordion{
   align-items: center;
-  top: 450px;
-  right: 150px;
 }
 
-
 .WeightInput{
-  top: 40px;
-  left: 120px;
   height: 300px;
   width: 250px;
   background: white;
   padding: 15px;
   border: 2px solid #4475AF;
   border-radius: 5px;
-  display: flex;
+  margin-bottom: 20px;
+  /*display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: center;
-  position: relative;
+  align-items: center;*/
+  /*position: relative;*/
 }
+
